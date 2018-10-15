@@ -9,3 +9,10 @@ for index,(image,label) in enumerate(images_and_labels[:8]):
     plt.imshow(image,cmap=plt.cm.gray_r,interpolation='nearest')
     plt.title('digit:%i' % label,fontsize=20)
 plt.show()
+# from sklearn.datasets import load_digits
+# digits = load_digits()
+# print(digits.data.shape)
+# import matplotlib.pyplot as plt #doctest: +SKIP
+# plt.gray() #doctest: +SKIP
+# plt.matshow(digits.images[0]) #doctest: +SKIP
+# plt.show() #doctest: +SKIP
