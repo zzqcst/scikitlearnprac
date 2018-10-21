@@ -37,24 +37,35 @@ from sklearn import svm
 clf = svm.SVC(gamma=0.001, C=100.)
 clf.fit(Xtrain, Ytrain)
 
-# 模型测试
-# 评估模型的准确度
-from sklearn.metrics import accuracy_score
-#Perform classification on samples in X.
-Ypred = clf.predict(Xtest)
-print(Ypred)
-print(accuracy_score(Ytest, Ypred))
+# # 模型测试
+# # 评估模型的准确度
+# from sklearn.metrics import accuracy_score
+# #Perform classification on samples in X.
+# Ypred = clf.predict(Xtest)
+# print(Ypred)
+# print(accuracy_score(Ytest, Ypred))
+#
+# print(clf.score(Xtest, Ytest))
+#
+# fig, axes = plt.subplots(4, 4, figsize=(8, 8))# 4行4列,每个大小8*8
+# fig.subplots_adjust(hspace=0.1, wspace=0.1)
+#
+# for i, ax in enumerate(axes.flat):
+#     ax.imshow(Xtest[i].reshape(8, 8), cmap=plt.cm.gray_r, interpolation='nearest')
+#     ax.text(0.05, 0.05, str(Ypred[i]), fontsize=32, transform=ax.transAxes,
+#             color='green' if Ypred[i] == Ytest[i] else 'red')
+#     ax.text(0.8, 0.05, str(Ytest[i]), fontsize=32, transform=ax.transAxes, color='black')
+#     ax.set_xticks([])
+#     ax.set_yticks([])
+# plt.show()
 
+# 保存模型参数
+from sklearn.externals import joblib
+# import numpy as np
+# joblib.dump(clf,"dig_svm.pkl")
+
+# 导入模型参数，直接进行预测
+clf=joblib.load("dig_svm.pkl")
+Ypred=clf.predict(Xtest)
 print(clf.score(Xtest, Ytest))
 
-fig, axes = plt.subplots(4, 4, figsize=(8, 8))
-fig.subplots_adjust(hspace=0.1, wspace=0.1)
-
-for i, ax in enumerate(axes.flat):
-    ax.imshow(Xtest[i].reshape(8, 8), cmap=plt.cm.gray_r, interpolation='nearest')
-    ax.text(0.05, 0.05, str(Ypred[i]), fontsize=32, transform=ax.transAxes,
-            color='green' if Ypred[i] == Ytest[i] else 'red')
-    ax.text(0.8, 0.05, str(Ytest[i]), fontsize=32, transform=ax.transAxes, color='black')
-    ax.set_xticks([])
-    ax.set_yticks([])
-plt.show()
