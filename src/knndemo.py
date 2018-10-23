@@ -17,4 +17,5 @@ c:color
 cmap:颜色映射表
 '''
 plt.scatter(X[:,0],X[:,1],c=y,s=100,cmap='cool')
+plt.scatter(c[:,0],c[:,1],s=100,marker="^",c="orange")
 plt.show()
